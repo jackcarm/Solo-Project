@@ -1,68 +1,68 @@
-from db.run_sql import run_sql
+# from db.run_sql import run_sql
 
-from models.user import User
-from models.transaction import Transaction
-
-
-def save(user):
-    sql = "INSERT INTO users (first_name, last_name) VALUES (%s, %s) RETURNING *"
-    values = [user.first_name, user.last_name]
-    results = run_sql(sql, values)
-    id = results[0]["id"]
-    user.id = id
-    return user
+# from models.user import User
+# from models.transaction import Transaction
 
 
-def select_all():
-    users = []
-
-    sql = "SELECT * FROM users"
-    results = run_sql(sql)
-
-    for row in results:
-        user = User(row["first_name"], row["last_name"], row["id"])
-        users.append(user)
-    return users
+# def save(user):
+#     sql = "INSERT INTO users (first_name, last_name) VALUES (%s, %s) RETURNING *"
+#     values = [user.first_name, user.last_name]
+#     results = run_sql(sql, values)
+#     id = results[0]["id"]
+#     user.id = id
+#     return user
 
 
-def select(id):
-    user = None
-    sql = "SELECT * FROM users WHERE id = %s"
-    values = [id]
-    result = run_sql(sql, values)[0]
+# def select_all():
+#     users = []
 
-    if result is not None:
-        user = User(result["first_name"], result["last_name"], result["id"])
-    return user
+#     sql = "SELECT * FROM users"
+#     results = run_sql(sql)
 
-
-def delete_all():
-    sql = "DELETE  FROM users"
-    run_sql(sql)
+#     for row in results:
+#         user = User(row["first_name"], row["last_name"], row["id"])
+#         users.append(user)
+#     return users
 
 
-def delete(id):
-    sql = "DELETE  FROM users WHERE id = %s"
-    values = [id]
-    run_sql(sql, values)
+# def select(id):
+#     user = None
+#     sql = "SELECT * FROM users WHERE id = %s"
+#     values = [id]
+#     result = run_sql(sql, values)[0]
+
+#     if result is not None:
+#         user = User(result["first_name"], result["last_name"], result["id"])
+#     return user
 
 
-def update(user):
-    sql = "UPDATE users SET (first_name, last_name) = (%s, %s) WHERE id = %s"
-    values = [user.first_name, user.last_name, user.id]
-    run_sql(sql, values)
+# def delete_all():
+#     sql = "DELETE  FROM users"
+#     run_sql(sql)
 
 
-def transaction(user):
-    transactions = []
+# def delete(id):
+#     sql = "DELETE  FROM users WHERE id = %s"
+#     values = [id]
+#     run_sql(sql, values)
 
-    sql = "SELECT * FROM transactions WHERE user_id = %s"
-    values = [user.id]
-    results = run_sql(sql, values)
 
-    for row in results:
-        transaction = Transaction(
-            row["amount"], row["merchant_id"], row["tag_id"], row["user_id"], row["id"]
-        )
-        transaction.append(transaction)
-    return transactions
+# def update(user):
+#     sql = "UPDATE users SET (first_name, last_name) = (%s, %s) WHERE id = %s"
+#     values = [user.first_name, user.last_name, user.id]
+#     run_sql(sql, values)
+
+
+# def transaction(user):
+#     transactions = []
+
+#     sql = "SELECT * FROM transactions WHERE user_id = %s"
+#     values = [user.id]
+#     results = run_sql(sql, values)
+
+#     for row in results:
+#         transaction = Transaction(
+#             row["amount"], row["merchant_id"], row["tag_id"], row["user_id"], row["id"]
+#         )
+#         transaction.append(transaction)
+#     return transactions
