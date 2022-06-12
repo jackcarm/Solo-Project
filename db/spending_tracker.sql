@@ -18,12 +18,11 @@ CREATE TABLE merchants(
     name VARCHAR(255)
 );
 
-CREATE TABLE transactions (
+CREATE TABLE transactions(
   id SERIAL PRIMARY KEY,
   amount INT,
-  merchant_id VARCHAR(255) REFERENCES merchants(id) ON DELETE CASCADE,
-  tag_id VARCHAR(255) REFERENCES tags(id) ON DELETE CASCADE,
-  date_of_pruchase DATE NOT NULL
+  merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE,
+  tag_id INT REFERENCES tags(id) ON DELETE CASCADE
 );
 
 
