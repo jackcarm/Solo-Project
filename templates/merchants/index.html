@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Merchants</h1>
+
+<p class="btn--wrapper">
+    <a class="btn btn--action" href="/merchants/new">New Merchant</a>
+</p>
+
+<ul>
+    {% for merchant in merchants %}
+    <main class="index_list">
+        <div>
+            <h3>{{ merchant.name }}</h3>
+        </div>
+        <div>
+            </form>
+            <form action="/merchants/{{ merchant.id }}/edit">
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+        {% endfor %}
+</ul>
+
+
+{% endblock %}

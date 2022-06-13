@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Tags</h1>
+
+<p class="btn--wrapper">
+    <a class="btn btn--action" href="/tags/new">New Tag</a>
+</p>
+
+<ul>
+    {% for tag in tags %}
+    <main class="index_list">
+        <div>
+            <h3>{{ tag.item }}</h3>
+        </div>
+        <div>
+            </form>
+            <form action="/tags/{{ tag.id }}/edit">
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+        {% endfor %}
+</ul>
+
+
+{% endblock %}

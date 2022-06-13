@@ -2,9 +2,9 @@
 {% block content %}
 
 <div>
-    <p>{{transaction.merchant.name}}</p>
+    <p>{{transaction.merchant.id}}</p>
     <hr>
-    <p>{{transaction.tag.item}}</p>
+    <p>{{transaction.tag.id}}</p>
     <p>{{transaction.amount}}</p>
     <p><a href="/transactions/{{transaction.id}}/edit">Edit</a></p>
 </div>

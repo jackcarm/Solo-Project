@@ -13,12 +13,12 @@ tag_blueprint = Blueprint("tag", __name__)
 @tag_blueprint.route("/tags")
 def tags():
     tags = tag_repository.select_all()
-    return render_template("tags/index.html", all_tags=tags)
+    return render_template("tags/index.html", tags=tags)
 
 
 # NEW
 # GET '/tags/new'
-@tag_blueprint.route("/tag/new")
+@tag_blueprint.route("/tags/new")
 def new_tag():
     return render_template("tags/new.html")
 
@@ -35,7 +35,7 @@ def create_tag():
 
 # SHOW
 # GET '/tags/<id>'
-@tag_blueprint.route("/tag/<id>")
+@tag_blueprint.route("/tags/<id>")
 def show_tag(id):
     tag = tag_repository.select(id)
     return render_template("tags/show.html", tag=tag)
@@ -43,25 +43,24 @@ def show_tag(id):
 
 # EDIT
 # GET '/tags/<id>/edit'
-@tag_blueprint.route("/tag/<id>/edit", methods=["GET"])
+@tag_blueprint.route("/tags/<id>/edit", methods=["GET"])
 def edit_tag(id):
     tag = tag_repository.select(id)
     return render_template("tags/edit.html", tag=tag)
 
 
 # UPDATE
-# PUT '/transactions/<id>'
+# PUT '/tags/<id>'
 @tag_blueprint.route("/tags/<id>", methods=["POST"])
 def update_tag(id):
     item = request.form["item"]
-    tag = tag_repository.select_all(item)
-    tag = Tag(item)
+    tag = Tag(item, id)
     tag_repository.update(tag)
     return redirect("/tags")
 
 
 # DELETE
-# DELETE '/transactions/<id>'
+# DELETE '/tags/<id>'
 @tag_blueprint.route("/tags/<id>/delete", methods=["POST"])
 def delete_tag(id):
     tag_repository.delete(id)

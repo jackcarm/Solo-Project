@@ -1,22 +1,27 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
+<h1>Transactions</h1>
 
-{% for transaction in all_transactions %}
-<div class="transactions">
-    <div class="content">
-        {{transaction.merchant.name}}
-        <div class="tag">
-            {{transaction.tag.item}}
-            <span class="amount">
-                {{transaction.amount}}</span>
+<p class="btn--wrapper">
+    <a class="btn btn--action" href="/transactions/new">New Transaction</a>
+</p>
+<ul>
+    {% for transaction in transactions %}
+    <main class="index_list">
+        <div>
+            <h3>{{ transaction.merchant.id }}</h3>
+            <h3>{{ transaction.tag.id }}</h3>
+            <h3>{{ transaction.amount }}</h3>
         </div>
-        <div class="buttons">
-            <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
-                <!-- NEW -->
-                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red"
-                        aria-hidden="true"></i></button>
-                <!-- NEW -->
+        <div>
             </form>
-            {% endfor %}
+            <form action="/transactios/{{ transaction.id }}/edit">
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+        {% endfor %}
+</ul>
 
-            {% endblock %}
+
+{% endblock %}

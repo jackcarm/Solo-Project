@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/merchants/{{merchants.id}}" method="post">
+
+    <div>
+        <label for="merchant">Where</label>
+        <input type="text" id="name" name="name" value="{{merchant.name}}" required>
+    </div>
+
+    <button type="submit">Add</button>
+
+</form>
+
+
+
+
+
+{% endblock %}

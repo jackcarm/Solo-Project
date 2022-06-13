@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form action="/merchants" method="post">
+    <div>
+        <label for="merchant">Where</label>
+        <input type="text" id="merchant" name="name" placeholder="e.g Apple Store" required autofocus>
+    </div>
+
+
+    <button type="submit">Add</button>
+
+</form>
+
+
+{% endblock %}

@@ -4,12 +4,12 @@
 <form action="/transactions/{{transaction.id}}" method="post">
     <div>
         <label for="merchant">Where</label>
-        <input type="text" id="name" name="name" value="{{transaction.merchant.name}}" required autofocus>
+        <input type="dropdown" id="name" name="name" value="{{transaction.merchant.id}}" required autofocus>
     </div>
 
     <div>
         <label for="tag">What</label>
-        <input type="text" id="item" name="item" value="{{transaction.tag.item}}" required>
+        <input type="text" id="item" name="item" value="{{transaction.tag.id}}" required>
     </div>
 
     <div>
