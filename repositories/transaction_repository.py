@@ -31,15 +31,15 @@ def select_all():
 
 
 def select(id):
-    transaction = None
+    # transaction = None
     sql = "SELECT * FROM tranactions WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 
-    if result is not None:
-        tag = tag_repository.select(result["tag_id"])
-        merchant = merchant_repository.select(result["merchant_id"])
-        transaction = Transaction(result["amount"], merchant, tag, result["id"])
+    # if result is not None:
+    tag = tag_repository.select(result["tag_id"])
+    merchant = merchant_repository.select(result["merchant_id"])
+    transaction = Transaction(result["amount"], merchant, tag, result["id"])
     return transaction
 
 

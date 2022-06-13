@@ -48,7 +48,7 @@ def show_transactions(id):
 
 
 # EDIT
-# GET '/tasks/<id>/edit'
+# GET '/transactions/<id>/edit'
 @transaction_blueprint.route("/transaction/<id>/edit", methods=["GET"])
 def edit_transaction(id):
     transaction = transaction_repository.select(id)
@@ -63,7 +63,7 @@ def edit_transaction(id):
 
 
 # UPDATE
-# PUT '/tasks/<id>'
+# PUT '/transactions/<id>'
 @transaction_blueprint.route("/transaction/<id>", methods=["POST"])
 def update_transaction(id):
     merchant_id = request.form["merchant_id"]
@@ -77,7 +77,7 @@ def update_transaction(id):
 
 
 # DELETE
-# DELETE '/tasks/<id>'
+# DELETE '/transactions/<id>'
 @transaction_blueprint.route("/transactions/<id>/delete", methods=["POST"])
 def delete_transaction(id):
     transaction_repository.delete(id)
