@@ -1,10 +1,10 @@
 from flask import Flask, render_template
 
-from controllers.transactions_controller import tasks_blueprint
+from controllers.transactions_controller import transaction_blueprint
 
 app = Flask(__name__)
 
-app.register_blueprint(tasks_blueprint)
+app.register_blueprint(transaction_blueprint)
 
 
 @app.route("/")

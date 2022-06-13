@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+    <p>{{transaction.merchant.name}}</p>
+    <hr>
+    <p>{{transaction.tag.item}}</p>
+    <p>{{transaction.amount}}</p>
+    <p><a href="/transactions/{{transaction.id}}/edit">Edit</a></p>
+</div>
+
+{% endblock %}
