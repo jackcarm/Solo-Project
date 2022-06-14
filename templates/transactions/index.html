@@ -2,26 +2,32 @@
 
 {% block content %}
 <h1>Transactions</h1>
+<h3>Total amount spent: <u>£{{ total_amount }}</u></h3>
 
 <p class="btn--wrapper">
     <a class="btn btn--action" href="/transactions/new">New Transaction</a>
 </p>
-<ul>
-    {% for transaction in transactions %}
-    <main class="index_list">
-        <div>
-            <h3>{{ transaction.merchant.id }}</h3>
-            <h3>{{ transaction.tag.id }}</h3>
-            <h3>{{ transaction.amount }}</h3>
-        </div>
-        <div>
-            </form>
-            <form action="/transactios/{{ transaction.id }}/edit">
-                <input type="submit" value="Edit">
-            </form>
-        </div>
-        {% endfor %}
-</ul>
+
+{% for transaction in transactions %}
+<main class="transaction_list">
+    <div>
+        <h3>{{ transaction.merchant.name }}</h3>
+        <p>{{ transaction.tag.item }}</p>
+        <p>£{{ transaction.amount }}</p>
+    </div>
+    <div>
+        </form>
+        <form action="/transactions/{{transaction.id}}/edit">
+            <input type="submit" value="Edit">
+        </form>
+        <form action="/transactions/{{ transaction.id }}/delete" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</main>
+
+{% endfor %}
+
 
 
 {% endblock %}

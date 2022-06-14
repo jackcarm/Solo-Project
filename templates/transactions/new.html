@@ -6,18 +6,24 @@
 <form action="/transactions" method="post">
     <div>
         <label for="merchant">Where</label>
-        <select id="name" name="name_id">
+        <select id="merchant" name="merchant_id">
+            <option>Select a merchant</option>
             {% for merchant in merchants %}
-            <option value="{{merchant.id}}">{{merchant.name}}</option>
+            <option value="{{merchant.id}}">
+                {{merchant.name}}
+            </option>
             {% endfor %}
         </select>
     </div>
 
     <div>
         <label for="tag">What</label>
-        <select id="item" name="item_id">
+        <select id="tag" name="tag_id">
+            <option>Select a tag</option>
             {% for tag in tags %}
-            <option value="{{tag.id}}">{{tag.name}}</option>
+            <option value="{{tag.id}}">
+                {{tag.item}}
+            </option>
             {% endfor %}
         </select>
     </div>
@@ -26,12 +32,7 @@
         <input type="number" id="amount" name="amount" placeholder="e.g 800.00" required>
     </div>
 
-
-
-
-
     <button type="submit">Add</button>
-
 </form>
 
 

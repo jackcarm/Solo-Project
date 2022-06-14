@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/tags/{{tags.id}}" method="post">
+<form action="/tags/{{tag.id}}" method="post">
 
     <div>
-        <label for="tag">What</label>
+        <label for="item">What</label>
         <input type="text" id="item" name="item" value="{{tag.item}}" required>
     </div>
 
-    <button type="submit">Add</button>
-
+    <input type="submit" value="Update">
+    <form action="/tags">
+        <input type="submit" value="Cancel">
+    </form>
 </form>
 
 

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+
+<header>
+    <h3> {{ tag.item }}</h3>
+    <form action="/tags/{{ tag.id }}/edit">
+        <input type="submit" value="Edit">
+    </form>
+</header>
+
+{% endblock %}

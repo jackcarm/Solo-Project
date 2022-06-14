@@ -2,11 +2,13 @@
 {% block content %}
 
 <div>
-    <p>{{transaction.merchant.id}}</p>
-    <hr>
-    <p>{{transaction.tag.id}}</p>
+    <h3>{{transaction.merchant.name}}</h3>
+    <p>{{transaction.tag.item}}</p>
     <p>{{transaction.amount}}</p>
     <p><a href="/transactions/{{transaction.id}}/edit">Edit</a></p>
+    <form action="/transactions/{{ transaction.id }}/edit">
+        <input type="submit" value="Edit">
+    </form>
 </div>
 
 {% endblock %}

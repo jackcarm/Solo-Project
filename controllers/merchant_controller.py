@@ -4,7 +4,7 @@ import repositories.merchant_repository as merchant_repository
 
 from flask import Blueprint
 
-merchant_blueprint = Blueprint("merchant", __name__)
+merchant_blueprint = Blueprint("merchants", __name__)
 
 # RESTful CRUD Routes
 
@@ -28,8 +28,8 @@ def new_merchant():
 @merchant_blueprint.route("/merchants", methods=["POST"])
 def create_merchant():
     name = request.form["name"]
-    merchant = Merchant(name)
-    merchant_repository.save(merchant)
+    merchants = Merchant(name)
+    merchant_repository.save(merchants)
     return redirect("/merchants")
 
 

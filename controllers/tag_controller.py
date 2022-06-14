@@ -4,7 +4,7 @@ import repositories.tag_repository as tag_repository
 
 from flask import Blueprint
 
-tag_blueprint = Blueprint("tag", __name__)
+tag_blueprint = Blueprint("tags", __name__)
 
 # RESTful CRUD Routes
 
@@ -28,8 +28,8 @@ def new_tag():
 @tag_blueprint.route("/tags", methods=["POST"])
 def create_tag():
     item = request.form["item"]
-    tag = Tag(item)
-    tag_repository.save(tag)
+    tags = Tag(item)
+    tag_repository.save(tags)
     return redirect("/tags")
 
 

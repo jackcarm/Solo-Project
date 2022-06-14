@@ -7,20 +7,25 @@
     <a class="btn btn--action" href="/tags/new">New Tag</a>
 </p>
 
-<ul>
-    {% for tag in tags %}
-    <main class="index_list">
-        <div>
-            <h3>{{ tag.item }}</h3>
-        </div>
-        <div>
-            </form>
-            <form action="/tags/{{ tag.id }}/edit">
-                <input type="submit" value="Edit">
-            </form>
-        </div>
-        {% endfor %}
-</ul>
+
+{% for tag in tags %}
+<main class="tag_list">
+    <div>
+        <h3>{{ tag.item }}</h3>
+    </div>
+    <div>
+        <form action="/tags/{{tag.id}}/edit">
+            <input type="submit" value="Edit">
+        </form>
+        <form action="/tags/{{ tag.id }}/delete" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+
+
+    </div>
+</main>
+{% endfor %}
+
 
 
 {% endblock %}

@@ -8,8 +8,8 @@ import repositories.merchant_repository as merchant_repository
 
 
 def save(transaction):
-    sql = "INSERT INTO transactions (amount, merchant_id, tag_id) VALUES (%s, %s, %s) RETURNING *"
-    values = [transaction.amount, transaction.merchant.id, transaction.tag.id]
+    sql = "INSERT INTO transactions (merchant_id, tag_id, amount) VALUES (%s, %s, %s) RETURNING id"
+    values = [transaction.merchant.id, transaction.tag.id, transaction.amount]
     results = run_sql(sql, values)
     id = results[0]["id"]
     transaction.id = id
@@ -31,15 +31,13 @@ def select_all():
 
 
 def select(id):
-    # transaction = None
-    sql = "SELECT * FROM tranactions WHERE id = %s"
+
+    sql = "SELECT * FROM transactions WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-
-    # if result is not None:
-    tag = tag_repository.select(result["tag_id"])
     merchant = merchant_repository.select(result["merchant_id"])
-    transaction = Transaction(result["amount"], merchant, tag, result["id"])
+    tag = tag_repository.select(result["tag_id"])
+    transaction = Transaction(merchant, tag, result["amount"], result["id"])
     return transaction
 
 
@@ -55,7 +53,7 @@ def delete(id):
 
 
 def update(transaction):
-    sql = "UPDATE transactions SET (amount, merchant_id, tag_id) = (%s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE transactions SET (amount, merchant_id, tag_id) = (%s, %s, %s) WHERE id = %s"
     values = [
         transaction.amount,
         transaction.merchant.id,
@@ -63,3 +61,14 @@ def update(transaction):
         transaction.id,
     ]
     run_sql(sql, values)
+
+
+def total_amount():
+    total = []
+
+    sql = "SELECT amount FROM transactions"
+    results = run_sql(sql)
+    for row in results:
+        amount = row["amount"]
+        total.append(amount)
+    return sum(total)

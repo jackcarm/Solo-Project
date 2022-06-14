@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS tags;
 
 CREATE TABLE tags(
     id SERIAL PRIMARY KEY,
-    item VARCHAR
+    item VARCHAR(255)
 );
 
 CREATE TABLE merchants(

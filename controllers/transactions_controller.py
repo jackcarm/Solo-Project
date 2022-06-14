@@ -1,3 +1,5 @@
+import pdb
+
 from flask import Flask, render_template, request, redirect
 from models.transaction import Transaction
 import repositories.transaction_repository as transaction_repository
@@ -7,7 +9,7 @@ import repositories.tag_repository as tag_repository
 
 from flask import Blueprint
 
-transaction_blueprint = Blueprint("transaction", __name__)
+transaction_blueprint = Blueprint("transactions", __name__)
 
 # RESTful CRUD Routes
 
@@ -16,7 +18,10 @@ transaction_blueprint = Blueprint("transaction", __name__)
 @transaction_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
-    return render_template("transactions/index.html", transactions=transactions)
+    total_amount = transaction_repository.total_amount()
+    return render_template(
+        "transactions/index.html", transactions=transactions, total_amount=total_amount
+    )
 
 
 # NEW
@@ -51,7 +56,7 @@ def create_transaction():
     amount = request.form["amount"]
     merchant = merchant_repository.select(merchant_id)
     tag = tag_repository.select(tag_id)
-    transaction = Transaction(merchant, tag, amount)
+    transaction = Transaction(amount, merchant, tag)
     transaction_repository.save(transaction)
     return redirect("/transactions")
 
@@ -66,16 +71,16 @@ def show_transactions(id):
 
 # EDIT
 # GET '/transactions/<id>/edit'
-@transaction_blueprint.route("/transaction/<id>/edit", methods=["GET"])
+@transaction_blueprint.route("/transactions/<id>/edit", methods=["GET"])
 def edit_transaction(id):
     transaction = transaction_repository.select(id)
-    merchant = merchant_repository.select_all()
-    tag = tag_repository.select_all()
+    merchants = merchant_repository.select_all()
+    tags = tag_repository.select_all()
     return render_template(
         "transactions/edit.html",
         transaction=transaction,
-        merchant=merchant,
-        tag=tag,
+        merchants=merchants,
+        tags=tags,
     )
 
 
