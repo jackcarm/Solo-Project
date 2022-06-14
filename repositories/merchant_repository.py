@@ -48,7 +48,7 @@ def delete(id):
 
 
 def update(merchant):
-    sql = "UPDATE merchants SET (name) = (%s) WHERE id = %s"
+    sql = "UPDATE merchants SET name = %s WHERE id = %s"
     values = [merchant.name, merchant.id]
     run_sql(sql, values)
 
