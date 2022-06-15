@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Transactions</h1>
-<h3>Total amount spent: <u>£{{ total_amount }}</u></h3>
 
-<p class="btn--wrapper">
-    <a class="btn btn--action" href="/transactions/new">New Transaction</a>
-</p>
+
+<hgroup class="tamount">
+    <h1>Transactions</h1>
+    <h2>Total: £{{ total_amount }}</h2>
+    <p class="btn--wrapper">
+        <a class="btnbtn--action" style="text-decoration:none;" rel="Click here" href="/transactions/new">Add Moola</a>
+    </p>
+</hgroup>
+
 
 {% for transaction in transactions %}
 <main class="transaction_list">
@@ -16,7 +20,6 @@
         <p>£{{ transaction.amount }}</p>
     </div>
     <div>
-        </form>
         <form action="/transactions/{{transaction.id}}/edit">
             <input type="submit" value="Edit">
         </form>
@@ -25,6 +28,7 @@
         </form>
     </div>
 </main>
+
 
 {% endfor %}
 

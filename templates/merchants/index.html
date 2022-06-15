@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Merchants</h1>
 
-<p class="btn--wrapper">
-    <a class="btn btn--action" href="/merchants/new">New Tag</a>
-</p>
+<div class="merchants_title">
+    <h1>Merchants</h1>
+    <p class="btn--wrapper">
+        <a class="btn btn--action" style="text-decoration:none;" rel="Click here" href="/merchants/new">New Merchant</a>
+    </p>
+</div>
+
 
 
 {% for merchant in merchants %}
@@ -14,7 +17,6 @@
         <h3>{{ merchant.name }}</h3>
     </div>
     <div>
-        </form>
         <form action="/merchants/{{merchant.id}}/edit">
             <input type="submit" value="Edit">
         </form>

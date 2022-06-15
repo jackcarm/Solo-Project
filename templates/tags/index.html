@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Tags</h1>
+<div class="tags_title">
+    <h1>Tags</h1>
+    <p class="btn--wrapper">
+        <a class="btn btn--action" style="text-decoration:none;" rel="Click here" href="/tags/new">New Tag</a>
+    </p>
+</div>
 
-<p class="btn--wrapper">
-    <a class="btn btn--action" href="/tags/new">New Tag</a>
-</p>
+
 
 
 {% for tag in tags %}

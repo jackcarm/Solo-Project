@@ -1,0 +1,148 @@
+h1>a {
+    color: rgb(239, 149, 156);
+    font-size: 40px;
+}
+
+.menu {
+    font-size: 16px;
+    display: inline-block
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+header {
+    background-color: rgb(36, 123, 160);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+
+.menu li {
+    padding-right: 5px;
+    list-style: none;
+    color: white;
+    font-size: 16px;
+}
+
+header>nav>ul>li {
+    display: inline;
+    list-style: none;
+}
+
+header>nav>ul>li>a {
+    color: white;
+}
+
+header>nav>ul {
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+/*Transactions */
+
+h1 {
+    color: rgb(239, 149, 156);
+
+}
+
+.btn--wrapper {
+    background: rgb(239, 149, 156);
+    padding: 15px 20px;
+    font-size: 15px;
+    height: 25px;
+    width: 100px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline;
+}
+
+p>a {
+    color: #fff;
+
+
+}
+
+hgroup>h2 {
+    color: rgb(77, 161, 103);
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+
+.tamount {
+    padding: 2px 35px;
+    border-radius: 10px;
+}
+
+
+
+input,
+select,
+button {
+    background: rgb(239, 149, 156);
+    padding: 5px 10px;
+    font-size: 10px;
+    height: 30px;
+    width: 80px;
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+.buttons {
+    padding: 1;
+    display: flex;
+    gap: 0.5rem;
+    padding: 10px 1px;
+
+}
+
+div>form>input {
+    color: #fff;
+    padding: 5px 20px;
+
+}
+
+
+
+main>div {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+}
+
+
+
+
+.tags_title {
+    padding: 5px 35px;
+
+}
+
+.merchants_title {
+    padding: 5px 35px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(187, 229, 237);
+    color: rgb(239, 149, 156);
+}

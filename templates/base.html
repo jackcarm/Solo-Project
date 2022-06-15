@@ -8,24 +8,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>My Transactions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap" rel="stylesheet">
+    <title>Moola</title>
 </head>
 
-<body>
+<body class="bg">
     <header>
+        <h1><a style="text-decoration:none;" rel="Click here" href="/">Moola.</a></h1>
         <nav>
             <ul class="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/transactions">Transactions</a></li>
-                <li><a href="/merchants">Merchants</a></li>
-                <li><a href="/tags">Tags</a></li>
+                <li><a style="text-decoration:none;" rel="Click here" href="/">Home</a></li>
+                <li><a style="text-decoration:none;" rel="Click here" href="/transactions">Transactions</a></li>
+                <li><a style="text-decoration:none;" rel="Click here" href="/merchants">Merchants</a></li>
+                <li><a style="text-decoration:none;" rel="Click here" href="/tags">Tags</a></li>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
 </body>
 
 </html>
+<footer>
+    <p>Moola.</p>
+    <p><a href="mailto:moola@moola.com">moola@moola.com</a></p>
+</footer>
